@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CodeExamples
+﻿namespace CodeExamples
 {
     public class Chapter_03_Recursion
     {
@@ -23,16 +17,19 @@ namespace CodeExamples
             var list = new List<Box>();
             while (list.Any())
             {
-                
+                var box = list.FirstOrDefault();
+                if (box.Key!=null)
+                {
+                    return box.Key.Value;
+                }
+
+                list.Add(box);
             }
 
             return 0;
-
         }
-
-        
-
     }
+
     /// lets assume the box is an object which can contain box and also key which is nullable
     public class Box 
     {
