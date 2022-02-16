@@ -4,23 +4,27 @@
     {
         public static int BinarySearch(int[] list, int item) 
         {
-            int low = 0;
+            // low and high to keep track of which part of the list you'l search in
+            int low = 0;      
             int high = list.Length - 1;
-
+            
+            // while you have not narrowed it down to one element
             while (low <= high) 
             {
-                int mid = (low + high) / 2;
-                int guess = list[mid];
-
-                if (guess == item)
+                // check the middle element
+                int mid = (low + high) / 2; 
+                int guess = list[mid];  
+                
+                if (guess == item) //found the item
                     return mid;
-                if (guess > item)
+                
+                if (guess > item) // the guess was too high
                     high = mid - 1;
-                if (guess < item)
+                else // the guess was too low
                     low = mid + 1;
             }
         
-            return -1;
+            return -1; // the item does not exist
         }
     }
 }
