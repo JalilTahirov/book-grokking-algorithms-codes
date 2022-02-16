@@ -20,9 +20,6 @@ namespace CodeExamples
             return newArr;
         }
 
-
-
-
         private int FindSmallest(List<int> arr)
         {
             var smallest = arr[0];
