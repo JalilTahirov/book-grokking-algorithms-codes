@@ -1,4 +1,7 @@
-﻿namespace CodeExamples
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace CodeExamples
 {
     public class Chapter_03_Recursion
     {
@@ -24,6 +27,20 @@
                 }
 
                 list.Add(box);
+            }
+
+            return 0;
+        }
+
+        public int LookForKeyRecursively(Box box)
+        {
+            if (box.Key == null)
+            {
+                LookForKeyRecursively(box.InnerBox);
+            }
+            else
+            {
+                return box.Key.Value;
             }
 
             return 0;
