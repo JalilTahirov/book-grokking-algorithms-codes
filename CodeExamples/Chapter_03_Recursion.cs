@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CodeExamples
@@ -15,24 +16,30 @@ namespace CodeExamples
             return box1;
         }
         
-        public int LookForKey(Box mainBox)
+        public void LookForKey(Box mainBox)
         {
             var list = new List<Box>();
+            list.Add(mainBox);
             while (list.Any())
             {
                 var box = list.FirstOrDefault();
-                if (box.Key!=null)
+                if (box.Key.HasValue)
                 {
-                    return box.Key.Value;
+                    Console.Write("found in loop ");
+
+                    Console.WriteLine(box.Key.Value);
+
+                    return;
+                }
+                else
+                {
+                    list.Add(box);
                 }
 
-                list.Add(box);
             }
-
-            return 0;
         }
 
-        public int LookForKeyRecursively(Box box)
+        public void LookForKeyRecursively(Box box)
         {
             if (box.Key == null)
             {
@@ -40,11 +47,26 @@ namespace CodeExamples
             }
             else
             {
-                return box.Key.Value;
+                Console.Write("found in recursion ");
+                Console.WriteLine(box.Key.Value);
+                return;
             }
-
-            return 0;
         }
+
+
+        public void CountDown(int number)
+        {
+            Console.WriteLine(number);
+            if (number == 0)
+            {
+                return;
+            }
+            CountDown(number-1);
+        }
+
+
+        
+
     }
 
     /// lets assume the box is an object which can contain box and also key which is nullable
